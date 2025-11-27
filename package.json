@@ -2,13 +2,15 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jinyyyylee.github.io/jy-dev/",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "build": "cross-env NODE_ENV=production next build",
+    "predeploy": "npm run build",
+    "deploy": "node scripts/create-nojekyll.js && gh-pages -d out --dotfiles"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "next": "16.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0"
@@ -18,8 +20,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.4",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

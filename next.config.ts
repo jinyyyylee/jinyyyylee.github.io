@@ -1,7 +1,24 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const isProd = process.env.NODE_ENV === 'production';
+
+const nextConfig = {
+  ...(isProd && {
+    output: 'export',
+    basePath: '/jy-dev.github.io',
+    assetPrefix: '/jy-dev.github.io/',
+  }),
+
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? '/jy-dev.github.io' : '',
+  },
+
+  images: {
+    ...(isProd && {
+      unoptimized: true,
+    }),
+  },
 };
 
-export default nextConfig;
+
+module.exports = nextConfig;
