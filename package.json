@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
   "homepage": "https://jinyyyylee.github.io/jy-dev/",
   "scripts": {
     "dev": "next dev",
@@ -23,6 +23,7 @@
     "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.5",
+    "eslint-plugin-better-tailwindcss": "^3.7.11",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
