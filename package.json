@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "license": "MIT",
-  "homepage": "https://jinyyyylee.github.io/jy-dev/",
+  "homepage": "https://jinyyyylee.github.io/",
   "scripts": {
     "dev": "next dev",
     "build": "cross-env NODE_ENV=production next build",

@@ -11,6 +11,7 @@ interface ProjectItem {
   description: string;
   stacks: string[];
   imageUrl: string;
+  contribution: number;
 }
 
 const projectItems: ProjectItem[] = [
@@ -22,6 +23,7 @@ const projectItems: ProjectItem[] = [
     description: "Flutter 기반 하이브리드 앱으로 보안 솔루션을 적용하고 배포 & 운영을 관리했습니다.",
     stacks: ["iOS", "Android", "Swift", "Kotlin"],
     imageUrl: "/mobischool.png",
+    contribution: 90,
   },
   {
     id: "hanati",
@@ -31,6 +33,7 @@ const projectItems: ProjectItem[] = [
     description: "Android/iOS 네이티브 기반 앱으로 LMS 기능을 개발하고 배포·운영을 관리했습니다.",
     stacks: ["iOS", "Android", "Swift", "Kotlin"],
     imageUrl: "/hanati.png",
+    contribution: 80,
   },
   {
     id: "hanam",
@@ -40,6 +43,7 @@ const projectItems: ProjectItem[] = [
     description: "Nuxt3 기반 진로·교육 플랫폼으로 인증, 설문, 검사지 등 주요 서비스 로직을 중심으로 프론트엔드와 백엔드를 개발했습니다.",
     stacks: ["Nuxt3", "JavaScript", "Java", "MySQL", "MyBatis"],
     imageUrl: "/hanam.png",
+    contribution: 60,
   },
   {
     id: "moongkle",
@@ -49,6 +53,7 @@ const projectItems: ProjectItem[] = [
     description: "Vue3·Swift·Kotlin 기반 커뮤니티 서비스로, 감사일기·피드·알림 등 핵심 기능을 구현하며 웹과 앱 개발 전반을 담당했습니다.",
     stacks: ["Vue", "Swift", "Kotlin", "Firebase"],
     imageUrl: "/moongkle.jpg",
+    contribution: 50,
   },
   {
     id: "tip",
@@ -58,6 +63,7 @@ const projectItems: ProjectItem[] = [
     description: "웹뷰 기반 하이브리드 구조 설계부터 구현까지 담당했으며, Spring Boot 백엔드 및 Vue3 프론트 개발을 함께 지원했습니다.",
     stacks: ["Java", "Spring Boot", "MySQL", "Vue3", "Swift", "Kotlin"],
     imageUrl: "/tip.png",
+    contribution: 50,
   },
   {
     id: "hanadigi",
@@ -67,6 +73,7 @@ const projectItems: ProjectItem[] = [
     description: "Objective-C·Java 기반 LMS 기능을 개선·확장하며 모바일 앱 유지보수 및 신규 기능 개발을 수행했습니다.",
     stacks: ["Object-C", "Java"],
     imageUrl: "/hanadigital.jpg",
+    contribution: 100,
   },
   {
     id: "polzzak",
@@ -76,13 +83,13 @@ const projectItems: ProjectItem[] = [
     description: "Spring Boot와 Nuxt3 기반으로 후원·결제·회원 기능 등 핵심 서비스를 개발하며 전체 구조 설계와 구현에 참여했습니다.",
     stacks: ["Java", "Spring Boot", "Nuxt3"],
     imageUrl: "/polzzak.jpg",
+    contribution: 40,
   },
 ];
 
 export function ProjectsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [hasEntered, setHasEntered] = useState(false);
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const [hasEntered, setHasEntered] = useState(false);;
 
   useEffect(() => {
     if (!sectionRef.current) {
@@ -109,24 +116,24 @@ export function ProjectsSection() {
       id="projects"
       ref={sectionRef}
       className={`
-        scroll-mt-32 rounded-[32px] border border-white/10 bg-neutral-950/70 p-8
-        text-white shadow-[0_40px_120px_-60px_rgba(15,23,42,1)]
-        backdrop-blur-2xl
+        scroll-mt-32 rounded-[32px] border border-neutral-200 bg-white/80 p-8
+        shadow-[0_40px_120px_-60px_rgba(15,23,42,1)] backdrop-blur-2xl
+        dark:border-white/10 dark:bg-neutral-950/70 dark:text-white
       `}
     >
       <div className={`
         space-y-6 text-center
         lg:text-left
       `}>
-        <div className={`
-          inline-flex items-center gap-3 rounded-full border
-          border-neutral-200/60 bg-linear-to-r px-4 py-2 text-xs font-semibold
-          tracking-[0.3em] text-neutral-600
-          dark:border-neutral-700 dark:from-neutral-900/50
-          dark:via-neutral-800/50 dark:text-neutral-200
-        `}>
+         <div className={`
+           inline-flex items-center gap-3 rounded-full border
+           border-neutral-200/60 bg-gradient-to-r px-4 py-2 text-xs
+           font-semibold tracking-[0.3em] text-neutral-600
+           dark:border-neutral-700 dark:from-neutral-900/50
+           dark:via-neutral-800/50 dark:text-neutral-200
+         `}>
           <span className={`
-            h-2 w-2 rounded-full bg-linear-to-r from-sky-500 to-green-500
+            h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-green-500
             motion-safe:animate-pulse
           `} />
           MAIN PROJECTS
@@ -144,9 +151,9 @@ export function ProjectsSection() {
             sm:text-xl
           `}>
             <span className={`
-              bg-linear-to-r from-neutral-900 via-slate-700 to-sky-600
+              bg-gradient-to-r from-neutral-900 via-slate-700 to-sky-600
               bg-clip-text
-              dark:from-white dark:via-slate-200 dark:to-purple-400
+              dark:from-white dark:via-slate-200 dark:to-sky-400
             `}>
               모바일·프론트엔드·백엔드를 넘나들며 설계와 구현을 주도한 대표 프로젝트들입니다.
             </span>
@@ -165,9 +172,11 @@ export function ProjectsSection() {
             style={{ transitionDelay: `${index * 90}ms` }}
             className={`
               group flex transform-gpu flex-col gap-4 rounded-[20px] border
-              border-white/10 bg-white/5 text-left shadow-2xl shadow-black/40
-              transition-all duration-500
-              hover:-translate-y-2 hover:border-white/25
+              border-neutral-200 bg-white text-left shadow-lg
+              shadow-neutral-200/50 transition-all duration-500
+              hover:-translate-y-2 hover:border-neutral-300 hover:shadow-xl
+              dark:border-white/10 dark:bg-white/5 dark:shadow-black/40
+              dark:hover:border-white/25
               ${
               hasEntered ? "scale-100 opacity-100" : "scale-95 opacity-0"
             }
@@ -175,7 +184,7 @@ export function ProjectsSection() {
           >
             <div className="relative overflow-hidden rounded-t-[20px]">
               <Image
-                src={`${basePath}${project.imageUrl}`}
+                src={project.imageUrl}
                 alt={project.title}
                 width={480}
                 height={320}
@@ -205,18 +214,57 @@ export function ProjectsSection() {
             <div className="space-y-3 p-3">
               <div>
                 <p className={`
-                  text-sm tracking-[0.2em] text-neutral-400 uppercase
+                  text-sm tracking-[0.2em] text-neutral-500 uppercase
+                  dark:text-neutral-400
                 `}>{project.summary}</p>
-                <h3 className="mt-1 text-xl text-white">{project.title}</h3>
+                <div className="mt-1 flex items-center gap-2">
+                  <h3 className={`
+                    text-xl text-neutral-900
+                    dark:text-white
+                  `}>{project.title}</h3>
+                </div>
+                <div className="mt-3 space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className={`
+                      text-xs font-medium text-neutral-600
+                      dark:text-neutral-400
+                    `}>
+                      기여도
+                    </span>
+                    <span className={`
+                      text-xs font-semibold text-neutral-700
+                      dark:text-neutral-300
+                    `}>
+                      {project.contribution}%
+                    </span>
+                  </div>
+                  <div className={`
+                    h-2 w-full overflow-hidden rounded-full bg-neutral-200
+                    dark:bg-neutral-800
+                  `}>
+                    <div
+                      className={`
+                        h-full rounded-full bg-gradient-to-r from-emerald-500
+                        to-sky-500 transition-all duration-700 ease-out
+                        dark:from-emerald-600 dark:to-sky-600
+                      `}
+                      style={{ width: `${project.contribution}%` }}
+                    />
+                  </div>
+                </div>
               </div>
-              <p className="text-sm text-white/50">{project.description}</p>
-              <div className="wrap-keep flex flex-wrap gap-2">
+              <p className={`
+                text-sm text-neutral-600
+                dark:text-white/50
+              `}>{project.description}</p>
+              <div className="flex flex-wrap gap-2">
                 {project.stacks.map((stack) => (
                   <span
                     key={stack}
                     className={`
-                      rounded-md border border-white/10 bg-white/5 px-3 py-1
-                      text-xs font-medium text-neutral-100
+                      rounded-md border border-neutral-200 bg-neutral-50 px-3
+                      py-1 text-xs font-medium text-neutral-700
+                      dark:border-white/10 dark:bg-white/5 dark:text-white/90
                     `}
                   >
                     {stack}
@@ -236,13 +284,13 @@ function getCategoryBadgeClass(category: ProjectCategory) {
   const base = "text-xs font-semibold text-white";
   switch (category) {
     case "Mobile":
-      return `${base} bg-sky-500/90`;
+      return `${base} bg-sky-500 dark:bg-sky-500/90`;
     case "Frontend":
-      return `${base} bg-emerald-500/90`;
+      return `${base} bg-emerald-500 dark:bg-emerald-500/90`;
     case "Backend":
-      return `${base} bg-purple-500/90`;
+      return `${base} bg-purple-500 dark:bg-purple-500/90`;
     default:
-      return `${base} bg-neutral-500/90`;
+      return `${base} bg-neutral-500 dark:bg-neutral-500/90`;
   }
 }
 

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { HeroSection } from "./components/main-sections/hero-section";
 import { ProjectsSection } from "./components/main-sections/projects-section";
 import { PlatformExtensionSection } from "./components/main-sections/platform-extension-section";
@@ -18,9 +19,24 @@ const navigationItems: NavigationItem[] = [
 ];
 
 export default function Home() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      // 300px 이상 스크롤했을 때 버튼 표시
+      setShowScrollTop(window.scrollY > 300);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
+    
     <div className={`
       relative min-h-screen bg-white font-sans text-neutral-900
       dark:bg-neutral-950 dark:text-neutral-100
@@ -51,8 +67,8 @@ export default function Home() {
           {/* 기본정보 섹션 */}
           <div style={{ width: '100%' }}>
               <Image
-                src={`${basePath}/profile.jpg`}
-                alt="profile"
+                src={`/profile.jpg`}
+                alt="이진영 프로필 사진"
                 width={0}
                 height={0}
                 sizes="100vw"
@@ -162,10 +178,10 @@ export default function Home() {
           </div>
 
           {/* 구분선 */}
-          <div className={`
+          <hr className={`
             border-t border-neutral-200
             dark:border-neutral-700
-          `}></div>
+          `} aria-hidden="true" />
 
           {/* 메뉴 섹션 */}
           <div className="flex flex-col gap-3">
@@ -183,6 +199,7 @@ export default function Home() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
+                  aria-label={`${item.label} 섹션으로 이동`}
                   className={`
                     flex items-center gap-3 rounded-2xl px-4 py-3 transition
                     hover:bg-white hover:text-neutral-900
@@ -196,8 +213,12 @@ export default function Home() {
                     const element = document.getElementById(item.id);
                     if (element) {
                       element.scrollIntoView({ behavior: "smooth", block: "start" });
+                      // 키보드 접근성 개선: 포커스 이동
+                      setTimeout(() => {
+                        element.setAttribute('tabindex', '-1');
+                        element.focus();
+                      }, 500);
                     }
-                    // Optionally, set the hash in the URL without jumping
                     if (history.pushState) {
                       history.pushState(null, "", `#${item.id}`);
                     }
@@ -210,11 +231,10 @@ export default function Home() {
             </nav>
           </div>
 
-          {/* 구분선 */}
-          <div className={`
+          <hr className={`
             border-t border-neutral-200
             dark:border-neutral-700
-          `}></div>
+          `} aria-hidden="true" />
 
           {/* 액션 버튼 섹션 */}
           <div className="flex flex-col gap-3">
@@ -226,19 +246,19 @@ export default function Home() {
               focus-visible:ring-2 focus-visible:ring-neutral-400
               focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
               dark:border-neutral-700 dark:hover:bg-neutral-800
-            `}
-               onClick={() => {
-               }}
-               target="_blank"
-               rel="noopener noreferrer"
+            `} aria-label="개발 블로그 바로가기"
+              href="https://jpointofviewntoe.tistory.com"
+              target="_blank"
+              rel="noopener noreferrer"
               >
-                <Image src={`${basePath}/tistory.png`} alt="Tistory" width={24} height={24} />
+                <Image src={`/tistory.png`} alt="Tistory" width={24} height={24} />
                 개발 블로그 바로가기
             </a>
 
             <a
-              href={`${basePath}/career.pdf`}
+              href={`/career.pdf`}
               download
+              aria-label="경력기술서 다운로드"
               className={`
                 flex items-center justify-center gap-2 rounded-2xl border
                 border-neutral-200 px-4 py-3 text-center text-sm font-semibold
@@ -289,6 +309,38 @@ export default function Home() {
           현재 프로젝트는 Next.js 기반으로 개발되었습니다.
         </p>
       </div>
+
+      {/* 맨 위로 가기 플로팅 버튼 */}
+      <button
+        onClick={scrollToTop}
+        aria-label="페이지 맨 위로 이동"
+        className={`
+          fixed right-6 bottom-24 z-20 flex h-12 w-12 items-center
+          justify-center rounded-full bg-neutral-900 text-white shadow-lg
+          shadow-neutral-900/30 transition-all duration-300 ease-in-out
+          hover:scale-110 hover:bg-neutral-800
+          focus-visible:ring-2 focus-visible:ring-neutral-400
+          focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
+          dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-200
+          ${
+            showScrollTop
+              ? 'pointer-events-auto translate-y-0 opacity-100'
+              : 'pointer-events-none translate-y-4 opacity-0'
+          }
+        `}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
     </div>
   );
 }

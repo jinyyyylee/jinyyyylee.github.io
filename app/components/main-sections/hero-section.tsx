@@ -145,13 +145,13 @@ export function HeroSection() {
       `}>
         <div className={`
           inline-flex items-center gap-3 rounded-full border
-          border-neutral-200/60 bg-linear-to-r px-4 py-2 text-xs font-semibold
+          border-neutral-200/60 bg-gradient-to-r px-4 py-2 text-xs font-semibold
           tracking-[0.3em] text-neutral-600
           dark:border-neutral-700 dark:from-neutral-900/50
           dark:via-neutral-800/50 dark:text-neutral-200
         `}>
           <span className={`
-            h-2 w-2 rounded-full bg-linear-to-r from-sky-500 to-green-500
+            h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-green-500
             motion-safe:animate-pulse
           `} />
           ABOUT ME
@@ -168,7 +168,7 @@ export function HeroSection() {
             sm:text-xl
           `}>
             <span className={`
-              bg-linear-to-r from-neutral-900 via-slate-700 to-sky-600
+              bg-gradient-to-r from-neutral-900 via-slate-700 to-sky-600
               bg-clip-text
               dark:from-white dark:via-slate-200 dark:to-sky-400
             `}>
@@ -180,7 +180,7 @@ export function HeroSection() {
           aria-live="polite"
           className={`
             mx-auto max-w-4xl rounded-3xl border border-neutral-200/70
-            bg-linear-to-r from-neutral-50/70 via-white to-neutral-50/70 px-5
+            bg-gradient-to-r from-neutral-50/70 via-white to-neutral-50/70 px-5
             py-4 text-base text-neutral-700 shadow-lg shadow-slate-200/10
             dark:border-neutral-700/60 dark:from-neutral-900/60
             dark:via-neutral-900/40 dark:to-neutral-900/60 dark:text-neutral-200
@@ -205,7 +205,7 @@ export function HeroSection() {
       `}>
         {stats.map((stat, index) => (
           <div key={stat.label} className={`
-            rounded-[26px] bg-linear-to-br
+            rounded-[26px] bg-gradient-to-br
             ${stat.gradientClass}
             overflow-hidden p-px
           `}>
@@ -264,41 +264,127 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className={`
-        rounded-3xl border border-white/10 bg-white/5 p-6 text-sm
-        leading-relaxed text-neutral-500
-        dark:border-white/5 dark:bg-white/5 dark:text-neutral-300
-      `}>
-        <p className="mb-4">
-          안녕하세요. 모바일부터 백엔드, 프론트엔드까지 전방위적으로 경험하며 성장해온 개발자 이진영입니다.
-          <br />
-          <span className="font-semibold text-white">Android</span> 개발자로 커리어를 시작한 뒤,{" "}
-          <span className="font-semibold text-white">iOS</span> 개발까지 자연스럽게 확장하며 다양한 기업의 교육 및 내부 시스템 앱 개발에 참여해 왔습니다.
-        </p>
-        <p className="mb-4">
-          앱 개발 2년 차 무렵, 서비스 전반의 구조를 이해하고 기술적으로 더 깊이 관여하고자{" "}
-          <span className="font-semibold text-white">Java</span>,{" "}
-          <span className="font-semibold text-white">Spring Boot</span>,{" "}
-          <span className="font-semibold text-white">MySQL</span> 기반의 백엔드 개발에 자발적으로 뛰어들었고, 이후 프론트엔드까지 업무 범위를 넓혔습니다. 도전은 단순히 기술 스택의 확장이 아닌, 서비스를 전방위적으로 이해하고 설계하며 문제를 해결할 수 있는 풀스택 개발자로서의 기반이 되었습니다.
-        </p>
-        <p className="mb-4">
-          현재는 앱(<span className="font-semibold text-white">iOS</span>,{" "}
-          <span className="font-semibold text-white">Android</span>)은 물론,{" "}
-          <span className="font-semibold text-white">Vue.js</span>/<span className={`
-            font-semibold text-white
-          `}>Nuxt.js</span> 기반 프론트엔드,{" "}
-          <span className="font-semibold text-white">Java</span>/<span className={`
-            font-semibold text-white
-          `}>Spring Boot</span> 기반 백엔드 개발, 퍼블리싱까지 모두 주도적으로 수행할 수 있습니다. 특히 여러 프로젝트에서 앱 보안, 소셜 로그인, 교육 콘텐츠 관리, 설문 시스템 등 실제 서비스에 밀접한 기능들을 직접 설계하고 구현하며 사용자 중심 개발의 감각도 키워왔습니다.
-        </p>
-        <p>
-          기술의 경계를 나누지 않고, 문제 해결과 서비스 완성도 향상에 집중하는 자세로 개발에 임하고 있습니다.
-        </p>
+      <div
+        className={`
+          rounded-3xl border border-neutral-200/70 bg-neutral-50/70 p-6 text-sm
+          leading-relaxed text-neutral-700
+          dark:border-white/10 dark:bg-white/5 dark:text-neutral-300
+        `}
+      >
+        <div className="mb-6 space-y-2">
+          <p
+            className={`
+              text-xs font-semibold tracking-[0.3em] text-neutral-500 uppercase
+              dark:text-neutral-400
+            `}
+          >
+            Professional Profile
+          </p>
+          <p
+            className={`
+              text-base font-semibold text-neutral-900
+              dark:text-white
+            `}
+          >
+            👋 Full-Stack Developer 이진영입니다.
+          </p>
+          <p>
+            모바일, 프론트엔드, 백엔드까지 다양한 기술 스택을 활용해 서비스의 전 과정을 주도적으로 설계하고
+            구현해온 풀스택 개발자입니다.
+          </p>
+          <p>
+            사용자 경험을 높이고 안정적인 서비스 운영을 목표로 기술적 완성도에 끝까지 집중합니다.
+          </p>
+        </div>
+
+        <div
+          className={`flex flex-col gap-6`}
+        >
+          <section
+            className={`
+              rounded-2xl border border-neutral-200/70 bg-white/60 p-4 shadow-sm
+              shadow-slate-200/40
+              dark:border-white/10 dark:bg-neutral-900/60
+            `}
+          >
+            <h3
+              className={`
+                mb-2 text-sm font-semibold text-neutral-900
+                dark:text-white
+              `}
+            >
+              📌 Frontend Development
+            </h3>
+            <p className="mb-1 break-keep">
+              Vue.js, Nuxt.js, Next.js를 기반으로 웹 서비스의 전면적인 개발과 구조 설계를 주도해 왔습니다.
+              <br/>
+              프로젝트 공통 컴포넌트 시스템을 직접 구축해 개발 생산성을 극대화했으며, 렌더링 구조 최적화를 통해
+              UX·퍼포먼스 개선에 집중해왔습니다.
+              <br/>
+              프론트엔드 팀장으로서 정기 코드 리뷰와 멘토링을 통해 팀의 코드 품질과 기술 성장을 함께 이끌었습니다.
+            </p>
+          </section>
+
+          <section
+            className={`
+              rounded-2xl border border-neutral-200/70 bg-white/60 p-4 shadow-sm
+              shadow-slate-200/40
+              dark:border-white/10 dark:bg-neutral-900/60
+            `}
+          >
+            <h3
+              className={`
+                mb-2 text-sm font-semibold text-neutral-900
+                dark:text-white
+              `}
+            >
+              📌 Mobile App Development (Android · iOS · Flutter)
+            </h3>
+            <p className="mb-1 break-keep">
+              Native(Android/iOS)와 Flutter, WebView 기반의 하이브리드 앱까지 폭넓은 모바일 개발 경험을 보유하고
+              있습니다.
+              <br/>
+              푸시 알림, 소셜 로그인, 보안 솔루션, 스토어 심사 대응 등 라이브 서비스 운영에 필요한 기능을 안정적으로
+              구현하고 유지해왔습니다.
+              <br/>
+              특히 까다로운 앱 스토어 배포 및 버전 관리 전담 경험을 바탕으로, 서비스가 중단 없이 안정적으로
+              릴리즈될 수 있도록 관리해 왔습니다.
+            </p>
+          </section>
+
+          <section
+            className={`
+              rounded-2xl border border-neutral-200/70 bg-white/60 p-4 shadow-sm
+              shadow-slate-200/40
+              md:col-span-2
+              dark:border-white/10 dark:bg-neutral-900/60
+            `}
+          >
+            <h3
+              className={`
+                mb-2 text-sm font-semibold text-neutral-900
+                dark:text-white
+              `}
+            >
+              📌 Backend Development
+            </h3>
+            <p className="mb-1">
+              Java, Spring Boot, MySQL 기반의 RESTful API 설계·구현을 통해 Web/App 서비스와의 안정적인 데이터 통신을
+              담당했습니다.
+              <br/>
+              비즈니스 로직 구현뿐 아니라 PG(결제), SMS/알림톡, 실시간 처리 등 필수적인 3rd Party 서비스 연동까지 직접
+              구축하며 서비스의 완성도를 높였습니다.
+            </p>
+            <p className="mb-1">
+              
+            </p>
+          </section>
+        </div>
       </div>
 
       {/* <div className="grid gap-6 md:grid-cols-3">
         {strengthCards.map((strength) => (
-          <div key={strength.label} className={`rounded-[26px] bg-linear-to-br p-px`}>
+          <div key={strength.label} className={`rounded-[26px] bg-gradient-to-br p-px`}>
             <div className="group rounded-[23px] border border-white/60 bg-white/80 p-6 transition duration-500 hover:-translate-y-2 hover:border-white hover:bg-white dark:border-neutral-800 dark:bg-neutral-900/50">
               <p className="text-lg font-semibold text-neutral-900 dark:text-white">{strength.label}</p>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">{strength.description}</p>

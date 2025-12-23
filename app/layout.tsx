@@ -12,24 +12,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jinyyyylee.github.io/"),
   title: "Jinyylee's Portfolio",
-  description: "Jinyylee's Portfolio",
+  description: "모바일·프론트엔드·백엔드를 넘나드는 풀스택 개발자 이진영의 포트폴리오입니다.",
   openGraph: {
     title: "Jinyylee's Portfolio",
-    description: "Jinyylee's Portfolio",
+    description: "모바일·프론트엔드·백엔드를 넘나드는 풀스택 개발자 이진영의 포트폴리오입니다.",
     images: [
       {
-        url: `${basePath}/profile.jpg`,
+        url: `/portfolio_thumb.png`,
         width: 1200,
         height: 630,
         alt: "Jinyylee's Portfolio Image",
       },
     ],
     type: "website",
-    url: `${basePath}`,
+    url: `https://jinyyyylee.github.io/`,
   },
 };
 
@@ -39,9 +38,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang="ko">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          ${geistSans.variable}
+          ${geistMono.variable}
+          antialiased
+        `}
       >
         {children}
       </body>
